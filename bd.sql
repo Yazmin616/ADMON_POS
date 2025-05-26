@@ -99,3 +99,130 @@ ALTER TABLE products
   ADD COLUMN container_id INT,
   ADD CONSTRAINT fk_container FOREIGN KEY (container_id) REFERENCES containers(id);
 
+CREATE TABLE clientes (
+  id SERIAL PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  telefono VARCHAR(20),
+  direccion TEXT,
+  correo VARCHAR(100),
+  creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+SELECT * FROM CLIENTES;
+
+INSERT INTO brands (name)
+VALUES ('Tecate');
+
+INSERT INTO containers (type)
+VALUES ('Lata');
+
+SELECT*FROM CONTAINER;
+
+select*from brands;
+
+INSERT INTO brands (name) VALUES 
+('Coca Cola'),
+('Pepsi'),
+('Sidral Mundet'),
+('Jarritos'),
+('Sangría Señorial'),
+('Fanta'),
+('Sprite'),
+('7up'),
+('Squirt'),
+('Manzanita Sol'),
+('Peñafiel'),
+('Big Cola'),
+('Crush'),
+('Fresca'),
+('Topo Chico'),
+('Jumex'),
+('Del Valle'),
+('Clamato'),
+('Ades'),
+('Frutsi'),
+('Vitaloe'),
+('Arizona'),
+('Corona'),
+('Modelo'),
+('Tecate'),
+('Sol'),
+('Minerva'),
+('Cucapá'),
+('Loba'),
+('Heineken'),
+('Butweiser'),
+('Pacifico'),
+('Victoria'),
+('Bohemia'),
+('Carta Blanca'),
+('Indio'),
+('Barrilito'),
+('Imperial'),
+('José Cuervo'),
+('Patrón'),
+('Sauza'),
+('Cazadores'),
+('Herradura'),
+('Don Julio'),
+('1800'),
+('El Jimador'),
+('Bonafont'),
+('Del Maguey'),
+('Monte Xanic'),
+('Amores'),
+('Alipus'),
+('Epura'),
+('Crema De Tequila'),
+('Triple Sec'),
+('Bang Energy'),
+('Vive 100'),
+('Amp Energy'),
+('Gatorade'),
+('Powerade'),
+('Electrolit Sport'),
+('Valle Redondo'),
+('Café Gardello'),
+('Fuze Tea'),
+('Nescafé To Go'),
+('Lipton'),
+('Santa Maria'),
+('El Silencio'),
+('Fidencio'),
+('Skarch'),
+('Ciel'),
+('Amaretto Di Saronno'),
+('Baileys'),
+('Licor 43'),
+('Jägermeister'),
+('Kahlúa'),
+('Ancho Reyes'),
+('Rompe Santa Clara'),
+('Red Bull'),
+('Monster Energy'),
+('Volt'),
+('Isostar'),
+('Casa Madero'),
+('Los Vascos'),
+('Santa Rita'),
+('Teazone'),
+('Té Chai');
+
+select*From categories;
+
+INSERT INTO categories (name) VALUES
+('Mezcales'),
+('Aguas Embotelladas'),
+('Licores'),
+('Bebidas Energizantes'),
+('Bebidas Deportivas'),
+('Vinos'),
+('Cafés Instantáneos'),
+('Tés'),
+('Aguas Minerales'),
+('Jugos'),
+('Bebidas'),
+('Tequilas');
+
+
+

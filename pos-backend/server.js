@@ -6,7 +6,11 @@ const db = require('./db');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const saleRoutes = require('./routes/sales');
-const categoriesRoute = require('./routes/categoriesRoute');
+const categoriesRoutes = require('./routes/categoryRoutes');
+const clientRoutes = require('./routes/clientRoutes');
+const brandsRoutes = require('./routes/brandRoutes');
+const containersRoutes = require('./routes/containerRoutes');
+
 
 const app = express();
 app.use(cors());
@@ -16,24 +20,29 @@ app.get('/', (req, res) => {
   res.send('POS backend funcionando ✅');
 });
 
-// Verificación de la conexión a la base de datos
-db.query('SELECT 1', (err) => {
-  if (err) {
+(async () => {
+  try {
+    // Verificamos la conexión a la base de datos con async/await
+    await db.query('SELECT 1');
+    console.log('✅ Conexión con la base de datos establecida correctamente');
+
+    // Definir rutas
+    app.use('/api/auth', authRoutes);
+    app.use('/api/products', productRoutes);
+    app.use('/api/sales', saleRoutes);
+    app.use('/api/categories', categoriesRoutes);
+    app.use('/api/clientes', clientRoutes);
+    app.use('/api/brands', brandsRoutes);
+    app.use('/api/containers', containersRoutes);
+    
+
+    // Iniciar servidor
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    });
+  } catch (err) {
     console.error('❌ Error al conectar con la base de datos:', err);
-    process.exit(1); // Si no puede conectar, termina el proceso
+    process.exit(1);
   }
-
-  console.log('✅ Conexión con la base de datos establecida correctamente');
-
-  // Rutas
-  app.use('/api/auth', authRoutes);
-  app.use('/api', productRoutes);
-  app.use('/api/sales', saleRoutes);
-  app.use('/api/categories', categoriesRoute);
-
-  // Iniciar servidor
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-  });
-});
+})();
